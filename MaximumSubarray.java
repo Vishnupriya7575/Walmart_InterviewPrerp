@@ -1,6 +1,5 @@
 public class MaximumSubarray {
 
-    public static int maxSubArray(int[] nums) {
 public int maxSubArray(int[] nums) {
     int maxSoFar = nums[0];   // max sum found so far
     int currentMax = nums[0]; // max sum ending at current position
