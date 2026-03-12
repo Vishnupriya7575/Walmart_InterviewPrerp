@@ -6,34 +6,28 @@ public class LongestSubstringWithoutRepeating {
         Explanation: "abc" is the longest substring without repeating characters
         */
 
-    public static int lengthOfLongestSubstring(String s) {
-        // Array to keep track of characters we've seen.
-        // Assuming ASCII, so 128 possible characters
-        int[] seen = new int[128];
-
-        int left = 0; // Left pointer of the sliding window
-        int max = 0;  // Maximum length of substring found so far
-
-        // Iterate through the string with the right pointer
-        for (int right = 0; right < s.length(); right++) {
-            char currentChar = s.charAt(right); // Current character at right pointer
-
-            // If we've already seen this character in the current window
-            while (seen[currentChar] == 1) {
-                // Remove the leftmost character from the window
-                seen[s.charAt(left)] = 0;
-                left++; // Shrink the window from the left
-            }
-
-            // Mark the current character as seen
-            seen[currentChar] = 1;
-
-            // Update maximum length: current window size = right - left + 1
-            max = Math.max(max, right - left + 1);
+public int lengthOfLongestSubstring(String s) {
+    int[] seen = new int[128]; // stores if character is already in window
+    int left = 0;              // start of window
+    int max = 0;               // max length found
+    
+    for (int right = 0; right < s.length(); right++) {
+        // if current char already exists in window
+        
+        while (seen[s.charAt(right)] == 1) {
+            seen[s.charAt(left)] = 0; // remove left character
+            left++;                   // shrink window
         }
 
-        return max;
+        // add current char to window
+        seen[s.charAt(right)] = 1;
+
+        // update max length
+        max = Math.max(max, right - left + 1);
     }
+
+    return max;
+}
 
     public static void main(String[] args) {
         String s = "abcabcbb";
