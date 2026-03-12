@@ -51,7 +51,7 @@ public int lengthOfLongestSubstring(String s) {
     for (int right = 0; right < s.length(); right++) {
         // if current char already exists in window
         
-        while (seen[s.charAt(right)] == 1) {
+        while (seen[s.charAt(right)] == 1) { //seen[c] == 1 means character c is already in the substring.
             seen[s.charAt(left)] = 0; // remove left character
             left++;                   // shrink window
         }
