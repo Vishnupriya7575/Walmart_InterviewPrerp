@@ -72,7 +72,7 @@ public int lengthOfLongestSubstring(String s) {
         */
         seen[s.charAt(right)] = 1;
         // update max length
-        max = Math.max(max, right - left + 1);
+        max = Math.max(max, right - left + 1); //Current window length = right - left + 1.
     }
 
     return max;
