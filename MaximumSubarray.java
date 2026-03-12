@@ -1,4 +1,7 @@
 public class MaximumSubarray {
+  //  (Kadane’s Algorithm)
+  // Time: O(n) → single pass
+  // Space: O(1) → no extra array needed
 
 public int maxSubArray(int[] nums) {
     int maxSoFar = nums[0];   // max sum found so far
