@@ -61,16 +61,16 @@ public int lengthOfLongestSubstring(String s) {
     int max = 0;               // max length found
     
     for (int right = 0; right < s.length(); right++) {
-        // if current char already exists in window
-        
+        /* if current char already exists in window */
         while (seen[s.charAt(right)] == 1) { //seen[c] == 1 means character c is already in the substring.
             seen[s.charAt(left)] = 0; // remove left character
             left++;                   // shrink window
         }
-
-        // add current char to window
+        /* add current char to window
+        “Mark this character as present in the current substring (window)”.
+        This is exactly how we “add” a character to the window.
+        */
         seen[s.charAt(right)] = 1;
-
         // update max length
         max = Math.max(max, right - left + 1);
     }
