@@ -4,7 +4,44 @@ public class LongestSubstringWithoutRepeating {
         Input:  s = "abcabcbb"
         Output: 3
         Explanation: "abc" is the longest substring without repeating characters
+
+        If interviewer asks "Why 128?"
+        You can say:
+        We use an array of size 128 because the ASCII character set contains 128 characters, 
+        and char values can directly index this array for O(1) lookup instead of using a HashMap.
+
+        int[] seen = new int[128];
+        We create an array of 128 because ASCII has 128 standard characters.
+
+        When we do:
+        seen[s.charAt(right)]
+        charAt() returns a character, but Java automatically converts it to its ASCII number.
+
+        Example:
+        s = "abc"
+
+        Step:
+        'a' → ASCII 97 → seen[97]
+        'b' → ASCII 98 → seen[98]
+        'c' → ASCII 99 → seen[99]
+
+        So the array is used like a fast lookup table.
+
+        seen[97] = 1  → 'a' is already in window
+        seen[98] = 1  → 'b' is already in window
+
+        Why not use HashMap?
+        We could also write:
+        Map<Character, Integer> map = new HashMap<>();
+        But array is faster because:
+        Method	            Time
+        Array lookup	    O(1) very fast
+        HashMap lookup	    O(1) but slower
+
+        So interviewers prefer: int[128] 
+        when the problem involves characters.
         */
+    
 
 public int lengthOfLongestSubstring(String s) {
     int[] seen = new int[128]; // stores if character is already in window
