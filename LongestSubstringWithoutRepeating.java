@@ -40,6 +40,18 @@ public class LongestSubstringWithoutRepeating {
 
         So interviewers prefer: int[128] 
         when the problem involves characters.
+
+        Key Idea
+        Two pointers create a sliding window.
+        left → shrinks window
+        right → expands window
+        
+        What seen[] stores
+        seen[c] = 1 → character is in current window
+        seen[c] = 0 → character not in window
+
+        Time Complexity : O(n)
+        Space complexity: O(1)
         */
     
 
