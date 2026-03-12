@@ -1,25 +1,19 @@
 public class MaximumSubarray {
 
     public static int maxSubArray(int[] nums) {
+public int maxSubArray(int[] nums) {
+    int maxSoFar = nums[0];   // max sum found so far
+    int currentMax = nums[0]; // max sum ending at current position
 
-        // Step 1: Initialize current sum and max sum with first element
-        int currentSum = nums[0];
-        int maxSum = nums[0];
-
-        // Step 2: Traverse the array starting from index 1
-        for (int i = 1; i < nums.length; i++) {
-
-            // Decide whether to start a new subarray at nums[i]
-            // or extend the previous subarray
-            currentSum = Math.max(nums[i], currentSum + nums[i]);
-
-            // Update the maximum subarray sum found so far
-            maxSum = Math.max(maxSum, currentSum);
-        }
-
-        // Step 3: Return the maximum sum
-        return maxSum;
+    for (int i = 1; i < nums.length; i++) {
+        // Either start a new subarray at i, or extend current one
+        currentMax = Math.max(nums[i], currentMax + nums[i]);
+        // Update global maximum
+        maxSoFar = Math.max(maxSoFar, currentMax);
     }
+
+    return maxSoFar;
+}
 
     public static void main(String[] args) {
 
